@@ -413,6 +413,10 @@ export default class ApiRequest extends LitElement {
       if (formEl.classList.contains("form-urlencoded")){
         fetchOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8'
       }
+      else{
+        // Keep default Content-Type. Otherwise required "boundary" parameter will be missed (see RFC 2616 section 3.7.2).
+        // fetchOptions.headers['Content-Type'] = 'multipart/form-data; charset=utf-8'
+      }
     }
 
     //Body Params (json/xml/text)
